@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import EMIPlanCard from '../components/EMIPlanCard';
 import { formatPrice, formatDiscount } from '../utils/formatPrice';
+import API_BASE_URL from '../config/api';
 
 export default function ProductPage() {
   const { slug } = useParams();
@@ -18,7 +19,7 @@ export default function ProductPage() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/api/products/${slug}`)
+      .get(`${API_BASE_URL}/api/products/${slug}`)
       .then((res) => {
         setProduct(res.data);
         setSelectedVariantIdx(0);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
+import API_BASE_URL from '../config/api';
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
@@ -9,7 +10,7 @@ export default function HomePage() {
 
   useEffect(() => {
     axios
-      .get('/api/products')
+      .get(`${API_BASE_URL}/api/products`)
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
